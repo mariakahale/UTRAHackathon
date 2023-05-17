@@ -1,0 +1,183 @@
+//Incomplete code
+//Total arduino code for the entire rover.
+
+
+int trigPin = 13;    // Trigger
+int echoPin = 11;    // Echo
+long duration, cm, inches;
+
+
+const int ENA_PIN = 7; // the Arduino pin connected to the EN1 pin L298N
+const int IN1_PIN = 6; // the Arduino pin connected to the IN1 pin L298N
+const int IN2_PIN = 5; // the Arduino pin connected to the IN2 pin L298N
+const int IN3_PIN = 4; 
+const int IN4_PIN = 3; 
+const int ENB_PIN = 8; 
+
+const int start_cood = 0;
+
+int get_coords(int myArray[][2], int num_of_coords){
+  for (int b = 0; b < num_of_coords; b++){
+    int x_coord = myArray[b][0]);
+    int y_coord = (myArray[b][1]);
+  }
+}
+void calc_coords(float FARMLENGTH, float FARMWIDTH){
+    int section_length =  223; // sqrt(5 hectares -> m)
+    int section_width =  223; //
+
+    int num_sections_length = FARMLENGTH / section_length;
+    int num_sections_width = FARMWIDTH / section_width;
+
+    int section_size_length = FARMLENGTH / num_sections_length;
+    int section_size_width = section_width;
+    int start_x = section_size_length / 2;
+    int start_y = section_size_width / 2;
+
+    int myArray[(num_sections_length)(num_sections_width)][2];
+    int a = 0;
+    for (int i = 0; i < num_sections_length; i++) {
+        for (int j = 0; j < num_sections_width; j++) {
+            // center coordinates
+            int center_x = start_x + i section_size_length;
+            int center_y = start_y + j * section_size_width;
+
+            // Print the center coordinates of the current section
+            myArray[a][0] = center_x;
+            myArray[a][1] = center_y;
+            a++;
+
+        }
+    }
+    get_coords(myArray, a);
+
+}
+
+int calc_speed(int DIAMETER, int RPM){
+  int v = (DIAMETER/2) * RPM * 0.10472;
+  return v;
+}
+
+int sortArray(int arr[][2], int num_of_coords) {
+  for (int i = 0; i < num_of_coords - 1; i++) {
+    int minIndex = i;
+    for (int j = i + 1; j < num_of_coords; j++) {
+      if (arr[j][0] < arr[minIndex][0]) {
+        minIndex = j;
+      }
+      else if (arr[j][0] == arr[minIndex][0] && arr[j][1] < arr[minIndex][1]) {
+        minIndex = j;
+      }
+    }
+    int temp = arr[i][0];
+    arr[i][0]=arr[minIndex][0];
+    arr[minIndex][0] = temp; 
+
+    int temp2 = arr[i][1];
+    arr[i][1] = arr[minIndex][1];
+    arr[minIndex][1] = temp2;
+  }
+
+  return myArray;
+}
+
+
+void setup() {
+  //Serial Port begin
+  Serial.begin (9600);
+  //Define inputs and outputs
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+
+  pinMode(ENA_PIN, OUTPUT);
+  pinMode(IN1_PIN, OUTPUT);
+  pinMode(IN2_PIN, OUTPUT);
+
+  pinMode(ENB_PIN, OUTPUT);
+  pinMode(IN3_PIN, OUTPUT);
+  pinMode(IN4_PIN, OUTPUT);
+
+  int[][] cood = {};
+
+}
+ 
+void loop() {
+
+
+  
+  // The sensor is triggered by a HIGH pulse of 10 or more microseconds.
+  // Give a short LOW pulse beforehand to ensure a clean HIGH pulse:
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(5);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+ 
+  // Read the signal from the sensor: a HIGH pulse whose
+  // duration is the time (in microseconds) from the sending
+  // of the ping to the reception of its echo off of an object.
+  pinMode(echoPin, INPUT);
+  duration = pulseIn(echoPin, HIGH);
+ 
+  // Convert the time into a distance
+  cm = (duration/2) / 29.1;     // Divide by 29.1 or multiply by 0.0343
+  inches = (duration/2) / 74;   // Divide by 74 or multiply by 0.0135
+  
+  Serial.print(inches);
+  Serial.print("in, ");
+  Serial.print(cm);
+  Serial.print("cm");
+  Serial.println();
+  
+  delay(250);
+
+
+  digitalWrite(IN1_PIN, HIGH); // control motor A spins clockwise
+  digitalWrite(IN2_PIN, LOW);  // control motor A spins clockwise}
+  digitalWrite(IN3_PIN, HIGH);  // control motor A spins clockwise}
+  digitalWrite(IN4_PIN, LOW);  // control motor A spins clockwise}
+
+  for (int i = 0; i <= 255; i++){
+      int[] target_cood = cood[i];
+      int x_cood = target_cood[0];   
+      int y_cood = target_cood[1]; 
+
+    analogWrite(ENA_PIN, 170); // control the speed  
+    analogWrite(ENB_PIN, 170); // control the speed
+
+    int current_speed = calc_speed(6, 170);
+    
+    
+    delay(10);
+
+      
+  
+  }
+  //moving forward
+  for (int speed = 0; speed <= 255; speed++) {
+    analogWrite(ENA_PIN, 170); // control the speed  
+    analogWrite(ENB_PIN, 170); // control the speed
+    delay(10);
+  }
+  delay(1000); // rotate at maximum speed 1 seconds in in clockwise direction
+
+  if (inches <= 3){ //turn left
+    Serial.println("turning left");
+    analogWrite(ENA_PIN, 60); 
+    digitalWrite(IN1_PIN,LOW);
+    digitalWrite(IN2_PIN,HIGH); 
+    analogWrite(ENB_PIN,60); 
+    digitalWrite(IN3_PIN,HIGH);
+    digitalWrite(IN4_PIN,LOW);
+
+    delay(50);
+  }  
+
+  //for (int speed = 255; speed >= 0; speed--) {
+    //analogWrite(ENA_PIN, speed); // control the speed
+    //analogWrite(ENB_PIN, speed); // control the speed
+    //delay(10);
+
+  //}
+
+}
