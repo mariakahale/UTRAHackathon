@@ -1,3 +1,5 @@
+//This is a modified version of the SEEK2023 Hackathon code for our own rover.
+
 /* Bluetooth Interfacing with Arduino to drive a rover.
   
    
