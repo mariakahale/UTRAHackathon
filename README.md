@@ -12,5 +12,9 @@ The Hackathon Rover Project involved designing and building an autonomous rover 
 
 ### Rover in Action
 <p align="center">
-<img width="350" src="https://github.com/user-attachments/assets/69f880f5-c0f1-41f7-964d-dbacbbac78f2">
+
+
+https://github.com/user-attachments/assets/ec2a5f9f-fd7d-4db1-88fa-cfa543c1acfe
+
+
 </p>
