@@ -1,5 +1,9 @@
 # Hackathon Rover Project
 Autonomous rover that picks up litter, designed in under 24 hours using Arduino and Python! We were runner ups with our sustainability-focused design.
+- IR sensors
+- DC Motor control
+- Ultrasonic sensors
+- Bluetooth communications
 
 **Overview**  
 The Hackathon Rover Project involved designing and building an autonomous rover capable of navigating through challenging terrains. Utilizing a combination of sensors and a microcontroller, the rover was programmed to detect obstacles, follow predefined paths, and adapt to dynamic environments. The project emphasized teamwork, rapid prototyping, and problem-solving skills, resulting in a functional prototype that showcased our innovative approach to robotics in a competitive setting.
