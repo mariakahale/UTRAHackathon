@@ -15,6 +15,13 @@ The Hackathon Rover Project involved designing and building an autonomous rover 
 <img width="350" src="https://github.com/user-attachments/assets/0b450265-2796-475c-a34f-7749651e98e4">
 </p>
 
+### Rover Path Mapping
+
+
+https://github.com/user-attachments/assets/b6853694-b358-4095-b377-dee64a8f50bb
+
+
+
 ### Rover in Action
 <p align="center">
 
