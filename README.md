@@ -25,6 +25,10 @@ https://github.com/user-attachments/assets/b6853694-b358-4095-b377-dee64a8f50bb
 ### Rover in Action
 <p align="center">
 
+### Final Rover
+![Untitled](https://github.com/user-attachments/assets/1de319e2-d299-40db-b504-fd5a3e0915d9)
+
+
 
 https://github.com/user-attachments/assets/ec2a5f9f-fd7d-4db1-88fa-cfa543c1acfe
 
